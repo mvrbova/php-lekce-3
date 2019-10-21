@@ -1,3 +1,18 @@
+<?php
+session_start();
+$login = ['admin' => 'top-secret'];
+$data = ['Datum registrace:' => '2.4.2018', 'Souhlas s podmínkami' => 'ANO', 'Počet objednávek' => 23];
+
+if (($_POST['firstName']) == "admin" && ($_POST['secret']) == "top-secret") {
+    $_SESSION['login'] = true;
+    if (isset($_SESSION['login'])) {
+        echo <a href="admin.php">"Pokračovat do administrace"</a>;}
+    else {
+        echo "Chybné jméno nebo heslo";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,20 +49,7 @@
     </form>
 
     <div>
-    <?php
-    $login = ['admin' => 'top-secret'];
-    $data = ['Datum registrace:' => '2.4.2018', 'Souhlas s podmínkami' => 'ANO', 'Počet objednávek' => 23];
 
-    if (($_SESSION) == "admin" && ($_SESSION) == "top-secret") {
-        session_start();
-        $_SESSION["admin"] = true;
-        if (isset($_SESSION["admin"])) {
-            echo  <a href="admin.php">"Pokračovat do administrace"</a>;}
-        else {
-            echo "Chybné jméno nebo heslo";
-        }
-    }
-    ?>
     </div>
 
 </div>
